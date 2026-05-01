@@ -1,0 +1,34 @@
+{
+    "fd": {
+        "description": "alternative to `find`",
+        "url": "https://github.com/sharkdp/fd",
+        "cmds": {
+            "check": "brew info fd",
+            "install": "brew install fd"
+        }
+    },
+    "jq": {
+        "description": "parse JSON",
+        "url": "https://jqlang.org",
+        "cmds": {
+            "check": "brew info jq",
+            "install": "brew install jq"
+        }
+    },
+    "ignr": {
+        "description": "generate gitignore files",
+        "url": "https://github.com/byteowlz/ignr",
+        "cmds": {
+            "check": "brew info ignr",
+            "install": "brew tap byteowlz/tap && brew install ignr"
+        }
+    },
+    "tree": {
+        "description": "list contents of directories in a tree-like format",
+        "url": "https://linux.die.net/man/1/tree",
+        "cmds": {
+            "check": "brew info tree",
+            "install": "brew install tree"
+        }
+    }
+}

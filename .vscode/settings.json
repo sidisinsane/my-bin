@@ -1,0 +1,56 @@
+{
+    // -------------------------------------------------------------------------
+    // Editor Settings
+    //
+    // Dependencies:
+    // - Fira Code: Monospace font (Install: `brew install font-fira-code`)
+    // -------------------------------------------------------------------------
+    "editor.fontFamily": "'Fira Code', 'JetBrains Mono', Consolas, monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.minimap.enabled": true,
+    "editor.renderWhitespace": "selection",
+    "editor.rulers": [80],
+
+    // -------------------------------------------------------------------------
+    // Theme Settings
+    //
+    // Dependencies:
+    // - sidisinsane.humanuals-theme: Theme inspired by Anthropic Claude
+    // - danielgjackson.auto-dark-mode-windows: Toggle light/dark theme
+    //   - Note: Set `window.autoDetectColorScheme` to `false`
+    // -------------------------------------------------------------------------
+
+    // --- Theme selection -----------------------------------------------------
+    "window.autoDetectColorScheme": false,
+    "workbench.iconTheme": "vs-seti",
+    "workbench.preferredDarkColorTheme": "Humanuals Dark Theme",
+    "workbench.preferredLightColorTheme": "Humanuals Light Theme",
+
+    // --- Temperature (cool|neutral|warm, default: "neutral") ------------------------------------
+    "humanualsTheme.darkTemperature": "neutral",
+    "humanualsTheme.lightTemperature": "neutral",
+
+    // --- Contrast (soft|balanced|crisp, default: "balanced") --------------------------------------
+    "humanualsTheme.darkContrast": "balanced",
+    "humanualsTheme.lightContrast": "balanced",
+
+    // --- Selection color (default: "grey") -----------------------------------
+    "humanualsTheme.darkSelection": "grey",
+    "humanualsTheme.lightSelection": "grey",
+
+    // --- Cursor color (default: "white" / "black") ---------------------------
+    "humanualsTheme.darkCursor": "white",
+    "humanualsTheme.lightCursor": "black",
+
+    // --- Italic keywords (default: false) ------------------------------------
+    "humanualsTheme.italicKeywords": false,
+
+    // --- Italic comments (default: true) -------------------------------------
+    "humanualsTheme.italicComments": true,
+
+    // --- Diagnostic text background opacity (default: "0%") ------------------
+    "humanualsTheme.diagnosticTextBackgroundOpacity": "0%"
+}

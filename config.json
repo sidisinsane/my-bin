@@ -1,0 +1,15 @@
+{
+    "my-ignr": {
+        "output": ".gitignore",
+        "dependencies": ["jq", "ignr"]
+    },
+    "my-tree": {
+        "ignore-files": [
+            ".treeignore",
+            ".fdignore",
+            ".gitignore"
+        ],
+        "output": "TREE.txt",
+        "dependencies": ["jq", "fd", "tree"]
+    }
+}
