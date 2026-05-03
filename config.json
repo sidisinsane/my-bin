@@ -1,4 +1,22 @@
 {
+    "my-favicon-fetch": {
+        "output": "favicons",
+        "icons": [
+            "favicon.svg",
+            "assets/favicon.svg",
+            "assets/img/favicon.svg",
+            "assets/images/favicon.svg",
+            "favicon.png",
+            "assets/favicon.png",
+            "assets/img/favicon.png",
+            "assets/images/favicon.png",
+            "favicon.ico",
+            "assets/favicon.ico",
+            "assets/img/favicon.ico",
+            "assets/images/favicon.ico",
+            "icon.png"
+        ]
+    },
     "my-ignr": {
         "output": ".gitignore",
         "dependencies": ["ignr"]
