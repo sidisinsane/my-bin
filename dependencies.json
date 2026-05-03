@@ -23,6 +23,14 @@
             "install": "brew tap byteowlz/tap && brew install ignr"
         }
     },
+    "magick": {
+        "description": "edit and manipulate images",
+        "url": "https://imagemagick.org",
+        "cmds": {
+            "check": "brew info imagemagick",
+            "install": "brew install ghostscript && brew install imagemagick"
+        }
+    },
     "tree": {
         "description": "list contents of directories in a tree-like format",
         "url": "https://linux.die.net/man/1/tree",

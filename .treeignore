@@ -1,4 +1,4 @@
-# ---- ignr (detected: en_us.utf-8,macos,vscode) @ 2026-05-01 ----
+# ---- ignr (detected: en_us.utf-8,macos,vscode) @ 2026-05-03 ----
 
 # === macos ===
 # macOS
@@ -40,8 +40,7 @@ Temporary Items
 
 # ---- added @ 2026-05-01 ----
 __IGNORE__
+.git
 bin/*
 !bin/.gitkeep
-files/images/build/*
-!files/images/build/.gitkeep
 TREE.txt
