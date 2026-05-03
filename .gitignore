@@ -42,6 +42,7 @@ Temporary Items
 __IGNORE__
 bin/*
 !bin/.gitkeep
+favicons
 files/images/build/*
 !files/images/build/.gitkeep
 TREE.txt
