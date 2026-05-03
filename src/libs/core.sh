@@ -98,6 +98,25 @@ get_config() {
   echo "$val"
 }
 
+# get_config_json <key>
+# Returns the raw JSON value for a key — useful for arrays of objects.
+get_config_json() {
+  local key="$1"
+  local val=""
+
+  if [[ -f "$_USER_CONFIG" ]]; then
+    val=$(jq -c --arg bin "$BIN_NAME" --arg key "$key" \
+      '.[$bin][$key] // empty' "$_USER_CONFIG" 2>/dev/null)
+  fi
+
+  if [[ -z "$val" && -f "$_SYSTEM_CONFIG" ]]; then
+    val=$(jq -c --arg bin "$BIN_NAME" --arg key "$key" \
+      '.[$bin][$key] // empty' "$_SYSTEM_CONFIG" 2>/dev/null)
+  fi
+
+  echo "$val"
+}
+
 # get_config_array <key>
 # Returns array values one per line for use with mapfile.
 # User config wins over system config; empty output if not found in either.
@@ -331,8 +350,9 @@ print_enabled_flags() {
 
 validate_contract() {
   [[ -z "${BIN_NAME:-}" ]]          && { echo "❌ BIN_NAME is not set"; exit 1; }
-  [[ ${#ARGS[@]} -eq 0 ]]           && { echo "❌ ARGS is empty"; exit 1; }
   [[ "$(type -t main)" != "function" ]] && { echo "❌ main() is not defined"; exit 1; }
+  # ARGS is optional — scripts with no arguments are valid
+  ARGS=("${ARGS[@]:-}")
 }
 
 run() {
