@@ -37,7 +37,8 @@
 #   )
 #
 #   # Dep names only — details are looked up from dependencies.json.
-#   DEPS=("jq" "fd" "tree")
+#   # jq is a core dependency and does not need to be declared here.
+#   DEPS=("fd" "tree")
 #
 #   main() {
 #     echo "output:  $OUTPUT"
@@ -143,6 +144,22 @@ get_config_array() {
 # DEPS
 ################################################################################
 
+# Core dependencies required by this library itself.
+# These are checked at source time and do not need to be declared in scripts.
+_CORE_DEPS=("jq")
+
+_check_core_deps() {
+  for bin in "${_CORE_DEPS[@]}"; do
+    if ! command -v "$bin" &>/dev/null; then
+      echo -e "❌ ${RED}Error:${COLOR_OFF} Missing core dependency '$bin' required by core.sh"
+      echo -e "   install: brew install $bin"
+      exit 1
+    fi
+  done
+}
+
+_check_core_deps
+
 # _get_dep_field <bin> <field>
 # Looks up a field (description | url | cmds.install) for a dep in the registry.
 _get_dep_field() {
@@ -196,8 +213,8 @@ show_help() {
 
     local status=""
     [[ "$req" == "true" && "$type" != "bool" ]] && status="[REQUIRED]"
-    [[ -n "$d" && "$type" == "value" ]]          && status="[Default: $d]"
-    [[ "$type" == "bool" ]]                       && status="[flag]"
+    [[ -n "$d" && "$type" == "value" ]] && status="[Default: $d]"
+    [[ "$type" == "bool" ]] && status="[flag]"
 
     printf "  %-20s %-38s %s\n" "-$s, --$l" "$desc" "$status"
   done
@@ -214,7 +231,7 @@ show_help() {
       install=$(_get_dep_install "$bin")
 
       printf "  - %-13s %-38s" "$bin" "${desc:-n/a}"
-      [[ -n "$url" ]]     && printf " %s" "$url"
+      [[ -n "$url" ]] && printf " %s" "$url"
       echo ""
       [[ -n "$install" ]] && printf "    install: %s\n" "$install"
     done
@@ -349,7 +366,7 @@ print_enabled_flags() {
 }
 
 validate_contract() {
-  [[ -z "${BIN_NAME:-}" ]]          && { echo "❌ BIN_NAME is not set"; exit 1; }
+  [[ -z "${BIN_NAME:-}" ]] && { echo "❌ BIN_NAME is not set"; exit 1; }
   [[ "$(type -t main)" != "function" ]] && { echo "❌ main() is not defined"; exit 1; }
   # ARGS is optional — scripts with no arguments are valid
   ARGS=("${ARGS[@]:-}")

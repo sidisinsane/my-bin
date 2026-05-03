@@ -25,7 +25,7 @@ ARGS=(
   "l|lang|value||false|language to add (e.g. python, node)"
 )
 
-DEPS=("jq" "ignr")
+DEPS=("ignr")
 
 main() {
   if [[ -f "$OUTPUT" ]]; then

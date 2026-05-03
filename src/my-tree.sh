@@ -25,7 +25,7 @@ ARGS=(
   "o|output|value|$DEFAULT_OUTPUT|true|output file"
 )
 
-DEPS=("jq" "fd" "tree")
+DEPS=("fd" "tree")
 
 main() {
   local ignore_file=""

@@ -1,7 +1,7 @@
 {
     "my-ignr": {
         "output": ".gitignore",
-        "dependencies": ["jq", "ignr"]
+        "dependencies": ["ignr"]
     },
     "my-img-stitcher": {
         "dependencies": ["jq", "magick"]
@@ -13,6 +13,6 @@
             ".gitignore"
         ],
         "output": "TREE.txt",
-        "dependencies": ["jq", "fd", "tree"]
+        "dependencies": ["fd", "tree"]
     }
 }
