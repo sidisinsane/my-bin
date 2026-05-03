@@ -2,6 +2,28 @@
     "my-ignr": {
         "output": ".gitignore"
     },
+    "my-img-stitcher": {
+        "images": [
+            {
+                "input": [
+                    "files/images/raw/screenshot-dark-mode-cool.png",
+                    "files/images/raw/screenshot-dark-mode-neutral.png",
+                    "files/images/raw/screenshot-dark-mode-warm.png"
+                ],
+                "output": "files/images/build/preview-dark-mode.png",
+                "gap": 20
+            },
+            {
+                "input": [
+                    "files/images/raw/screenshot-light-mode-cool.png",
+                    "files/images/raw/screenshot-light-mode-neutral.png",
+                    "files/images/raw/screenshot-light-mode-warm.png"
+                ],
+                "output": "files/images/build/preview-light-mode.png",
+                "gap": 20
+            }
+        ]
+    },
     "my-tree": {
         "ignore-files": [
             ".treeignore",

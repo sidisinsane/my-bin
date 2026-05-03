@@ -3,6 +3,9 @@
         "output": ".gitignore",
         "dependencies": ["jq", "ignr"]
     },
+    "my-img-stitcher": {
+        "dependencies": ["jq", "magick"]
+    },
     "my-tree": {
         "ignore-files": [
             ".treeignore",
