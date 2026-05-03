@@ -141,6 +141,49 @@ get_config_array() {
 }
 
 ################################################################################
+# URL
+################################################################################
+ 
+# url_parse <url>
+# Parses a URL into named variables, available globally after the call:
+#   URL_PROTO, URL_HOST, URL_DOMAIN, URL_SUBDOMAIN, URL_NAME, URL_PORT, URL_PATH
+url_parse() {
+  local raw="${1%/}"
+ 
+  URL_PROTO="${raw%%://*}"
+  local rest="${raw#*://}"
+ 
+  # strip user info (user@)
+  if [[ "$rest" == *@* ]]; then
+    rest="${rest#*@}"
+  fi
+ 
+  # split host+port from path
+  local hostport="${rest%%/*}"
+  URL_PATH="${rest#*/}"
+  [[ "$URL_PATH" == "$rest" ]] && URL_PATH=""
+ 
+  # split host and port
+  URL_HOST="${hostport%%:*}"
+  URL_PORT=""
+  [[ "$hostport" == *:* ]] && URL_PORT="${hostport##*:}"
+ 
+  # derive domain, subdomain and name from host
+  local levels
+  levels=$(awk -F"." '{print NF-1}' <<< "$URL_HOST")
+ 
+  if [[ "$levels" -eq 1 ]]; then
+    URL_DOMAIN="$URL_HOST"
+    URL_SUBDOMAIN=""
+  elif [[ "$levels" -ge 2 ]]; then
+    URL_DOMAIN=$(awk -F"." '{print $(NF-1) "." $NF}' <<< "$URL_HOST")
+    URL_SUBDOMAIN=$(awk -F"." '{print $1}' <<< "$URL_HOST")
+  fi
+ 
+  URL_NAME="${URL_DOMAIN%%.*}"
+}
+
+################################################################################
 # DEPS
 ################################################################################
 
